@@ -60,3 +60,5 @@ var greetingsFactoryFunction = function(names) {
        getName,
    }
 };
+
+module.exports = greetingsFactoryFunction;
