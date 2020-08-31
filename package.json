@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    
   },
   "devDependencies": {
     "mocha": "^8.1.3"
