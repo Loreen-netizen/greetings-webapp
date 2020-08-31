@@ -1,0 +1,167 @@
+/* ================================================BODY============================================================= */
+
+.main{
+    display: flex;
+    flex-direction:column;
+    justify-self: center;
+    align-items: center;
+  
+}
+
+#theGreetLabel{
+         font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+            font-size:x-large;
+            font-weight: 350;
+            
+        }
+        
+
+        .labelDiv{
+            margin: 3em;
+            padding: 2em;
+            justify-content: center;
+            display:flex;
+            width: 14%;
+            justify-self: center;
+            background-color: rgb(228, 215, 209);border: lightgrey solid 1px;
+        }
+
+
+#counterLabel{
+    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size:xx-large;
+    font-weight: 200;
+    margin:1em;
+
+}
+.counterDiv{
+display: flex;
+}
+
+#userName{
+    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size:large;
+    font-weight: 250;
+    margin:1em;
+    
+    
+}
+
+.inputDiv{
+display:flex;
+}
+
+.languageDiv{
+    display:flex;
+    flex:1;
+    margin-top:1em;
+    padding:1em;
+        font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+        font-size: large;
+        font-weight: 200;
+    }
+
+.buttonTag{
+ background-color: rgb(228, 215, 209);
+  font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size: large;
+    font-weight: 200;
+}
+
+.buttons{
+     display:flex;
+   
+}
+
+#resetCounterButton{
+    margin-left:1em;
+}
+
+
+
+
+
+/* ==================================MEDIA QUEIRIES================================================= */
+
+@media(max-width:650px){
+    .main{
+      display: inline-block;
+      width: auto;
+    }
+
+}
+
+@media(max-width:650px){
+   
+        #userName{
+    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size:x-large;
+    font-weight: 300;
+   padding:0;
+   margin:auto;
+   width:50%;
+    
+    
+}
+       
+    }
+    @media(max-width:650px){
+   
+       .inputDiv{
+
+  padding-left: 0;
+}
+       
+    }
+
+    @media(max-width:1741px){
+        .labelDiv{
+            background-color: white;
+            padding:0;
+            border: none; 
+            background-color: rgb(228, 215, 209);border: lightgrey solid 1px;
+           
+        }
+    }
+
+    @media(max-width:650px){
+        .labelDiv{
+            text-align: center;
+            padding: 1em;
+            margin: auto;
+            border: none;
+             background-color: rgb(228, 215, 209);border: lightgrey solid 1px;
+        }
+    }
+
+
+@media(max-width:650px){
+    #counterLabel{
+ font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size:x-large;
+    font-weight: 200;
+   padding:1em;
+    margin:auto;
+    
+    }
+}
+
+
+
+@media(max-width:650px){
+
+.languageDiv{
+    display: column;
+     margin: 1em;
+   
+}
+}
+
+  
+@media(max-width:650px){
+   .buttons{
+     display:column;
+    padding: 0;
+    margin:3em;
+}
+}
