@@ -1,7 +1,5 @@
 let greetingsFactoryFunction = require("../greetingsFactoryFunction.js");
 let assert = require("assert");
-
-
 describe("greetingsFactoryFunction", function () {
 
 
