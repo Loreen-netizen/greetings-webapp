@@ -17,8 +17,15 @@
         </div>
 
     <div class="inputDiv">
-        <form action="" method="">
- <input id = "userName" placeholder="type your name" class="inputTag"> </input>
+        <form action="/userNameUrl" method="POST">
+ <input id = "userName" placeholder="type your name" class="inputTag" name = "theUserName" value="{{userNameUrl.theUserName}}" > </input>
+
+  <div class="buttons">
+
+    <button id = "greetbtn" class="buttonTag" type="submit" > greet me</button>
+
+    
+   </div>
         </form>
        
     </div>
@@ -45,12 +52,12 @@
             <label id = "theGreetLabel" class="inputTag"> Welcome!  </label>
         </div>
 
-   <div class="buttons">
+   {{!-- <div class="buttons">
 
-    <button id = "greetbtn" class="buttonTag" > greet me</button>
+    <button id = "greetbtn" class="buttonTag" type="submit" > greet me</button>
 
     <button class= "buttonTag" id="resetCounterButton" >Reset Counter</button>
-   </div>
+   </div> --}}
 
 
 
@@ -60,7 +67,7 @@
     
 </body>
 <!-- <script src="greet.js"></script> -->
-<script src="dom2greetingsFactoryFunction.js" charset="utf-8"></script>
-<script src="dom2greet.js" charset="utf-8"></script>
+{{!-- <script src="dom2greetingsFactoryFunction.js" charset="utf-8"></script>
+<script src="dom2greet.js" charset="utf-8"></script> --}}
 
 </html>

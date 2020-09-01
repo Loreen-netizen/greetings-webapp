@@ -1,7 +1,12 @@
 let greetingsFactoryFunction = require("../greetingsFactoryFunction.js");
 let assert = require("assert");
 describe("greetingsFactoryFunction", function () {
+    
+    it("should greet Yeu", function () {
 
+        let greetFactoryFunction = greetingsFactoryFunction();
+        assert.equal("Hello Yeu", greetFactoryFunction.greet("Yeu"))
+    });
 
     it("should return 1 when one person is greeted", function () {
 
