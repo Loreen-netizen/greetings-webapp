@@ -24,10 +24,38 @@ app.get("/", function (req, res) {
 app.post('/userNameUrl', function (req, res) {
 
     let name = req.body.theUserName;
-    
-    console.log(greetingsFactoryFunction.greet(name));
+
+    console.log(greetingsFactoryFunction.verifyNames(name));
 
     res.redirect("/");
 
 });
+
+// read instructions on route
+
+//app.post('/userLanguage', function (req, res) {
+
+//     let languageChosen = req.body.language;
+    
+//     res.render("index", )
+//     console.log(languageChosen);
+    
+//     // res.send(greetingsFactoryFunction.verifyNames(name));
+
+//     res.redirect("/");
+
+// });
+
+// app.post('/greetingsMessage', function (req, res) {
+
+//     let name = req.body.theUserName;
+    
+//     console.log(language);
+    
+//     // res.send(greetingsFactoryFunction.verifyNames(name));
+
+//     res.redirect("/");
+
+// });
+
 

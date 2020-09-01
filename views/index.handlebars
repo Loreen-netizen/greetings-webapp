@@ -1,58 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
 </head>
+
 <body>
 
-   <div class="main">
+    <div class="main">
 
-    <div class = "counterDiv"> 
+        <div class="counterDiv">
 
-        <label id = "counterLabel" class="inputTag"> counter </label>
+            <label id="counterLabel" class="inputTag"> counter </label>
 
         </div>
 
-    <div class="inputDiv">
-        <form action="/userNameUrl" method="POST">
- <input id = "userName" placeholder="type your name" class="inputTag" name = "theUserName" value="{{userNameUrl.theUserName}}" > </input>
+        <div class="inputDiv">
+            <form action="/userNameUrl" method="POST">
+                <input id="userName" placeholder="type your name" class="inputTag" name="theUserName"
+                    value="{{userNameUrl.theUserName}}"> </input>
 
-  <div class="buttons">
+                <div class="buttons">
 
-    <button id = "greetbtn" class="buttonTag" type="submit" > greet me</button>
+                    <button id="greetbtn" class="buttonTag" type="submit"> greet me</button>
 
-    
-   </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <form action="/userLanguage" method="POST">
+            <div class="languageDiv">
+                <label class="languageLabels">
+                    English
+                    <input type="radio" name="language" value="{{language.English}}">
+                </label>
+
+
+                <label class="languageLabels">
+                    Shona
+                    <input type="radio" name="language" value="{{language.Shona}}">
+                </label>
+
+                <label class="languageLabels">
+                    Ndebele
+                    <input type="radio" name="language" value="{{language.Ndebele}}">
+                </label>
+
+                <input type="submit">
+
+            </div>
+            <div class="labelDiv">
+
+                <label id="theGreetLabel" class="inputTag" name="greetingsMessage"
+                    value={{ greetLabel.greetingsMessage}}> Welcome! </label>
+
+            </div>
         </form>
-       
-    </div>
 
-    <div class="languageDiv">
-        <label class="languageLabels">
-            English
-            <input type="radio" name="language" value="English">
-        </label>
-        
-        
-        <label class="languageLabels">
-            Shona
-            <input type="radio" name="language" value="Shona">
-        </label>
-        
-        <label class="languageLabels" >
-            Ndebele
-            <input type="radio" name="language" value="Ndebele">
-        </label>
-        
-        </div>
-        <div class="labelDiv"> 
-            <label id = "theGreetLabel" class="inputTag"> Welcome!  </label>
-        </div>
 
-   {{!-- <div class="buttons">
+
+        {{!-- <div class="buttons">
 
     <button id = "greetbtn" class="buttonTag" type="submit" > greet me</button>
 
@@ -61,10 +74,10 @@
 
 
 
-    
-   </div>
 
-    
+    </div>
+
+
 </body>
 <!-- <script src="greet.js"></script> -->
 {{!-- <script src="dom2greetingsFactoryFunction.js" charset="utf-8"></script>
