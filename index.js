@@ -23,10 +23,10 @@ app.get("/", function (req, res) {
 
 app.post('/userNameUrl', function (req, res) {
 
-    greetingsFactoryFunction.greet({
-        theUserName: req.body.theUserName,
-    });
-    console.log(greetingsFactoryFunction.greet());
+    let name = req.body.theUserName;
+    
+    console.log(greetingsFactoryFunction.greet(name));
+
     res.redirect("/");
 
 });
