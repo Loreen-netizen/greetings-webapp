@@ -18,44 +18,33 @@ app.listen(PORT, function () {
 
 app.get("/", function (req, res) {
 
-    res.render("index")
+    let name = req.body.theUserName;
+
+    res.render("index");
 });
 
-app.post('/userNameUrl', function (req, res) {
+app.post("/greet", function (req, res) {
+    let name = req.body.theUserName;
+    let language = req.body.language;
+    res.render("index",
+        {
+            greet: greetingsFactoryFunction.greetLanguage(name, language)
+        })
+
+});
+
+app.get('/greeted', function (req, res) {
 
     let name = req.body.theUserName;
 
-    console.log(greetingsFactoryFunction.verifyNames(name));
-
-    res.redirect("/");
+        
+    res.render("greeted", {
+        greeted: greetingsFactoryFunction.getName()
+    }
+    );
 
 });
 
-// read instructions on route
 
-//app.post('/userLanguage', function (req, res) {
-
-//     let languageChosen = req.body.language;
-    
-//     res.render("index", )
-//     console.log(languageChosen);
-    
-//     // res.send(greetingsFactoryFunction.verifyNames(name));
-
-//     res.redirect("/");
-
-// });
-
-// app.post('/greetingsMessage', function (req, res) {
-
-//     let name = req.body.theUserName;
-    
-//     console.log(language);
-    
-//     // res.send(greetingsFactoryFunction.verifyNames(name));
-
-//     res.redirect("/");
-
-// });
 
 

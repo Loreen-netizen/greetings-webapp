@@ -3,22 +3,30 @@ var greetingsFactoryFunction = function (names) {
     var namesGreeted = names || [];
 
 
-    var greet = function(name) {
+    var greet = function (name) {
         return "Hello " + name;
     };
     var verifyNames = function (name) {
-        var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        if (name === undefined) {
+            return;
+        }
+        else {
+            var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
-        if (theName) {
-            if (!namesGreeted.includes(theName)) {
-                namesGreeted.push(theName)
-                return namesGreeted;
+            if (theName) {
+                if (!namesGreeted.includes(theName)) {
+                    namesGreeted.push(theName)
+                    return namesGreeted;
+                }
             }
         }
+
     };
 
     var greetLanguage = function (name, language) {
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+
+        verifyNames(caseName);
         if (language === "Shona") {
             return ("Hesi Kani " + caseName + "!")
         }
