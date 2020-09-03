@@ -1,7 +1,7 @@
 var greetingsFactoryFunction = function (names) {
     var language = undefined;
     var namesGreeted = names || [];
-
+  
 
     var greet = function (name) {
         return "Hello " + name;
