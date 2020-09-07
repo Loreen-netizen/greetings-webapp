@@ -42,7 +42,7 @@ let name = req.params.theUserName;
 // greetingsFactoryFunction.verifyNames(name);
 let namesObject = greetingsFactoryFunction.getName();
 
-let numberOfGreetings = name + " have be" + namesObject[name];
+let numberOfGreetings = "Hello, " + name + " has been greeted " + namesObject[name] + " times";
 
  
 
