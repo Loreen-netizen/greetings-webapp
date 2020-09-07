@@ -36,15 +36,17 @@ app.post("/greet", function (req, res) {
 app.get('/greeted', function (req, res) {
 
     let name = req.body.theUserName;
-
-        
-    res.render("greeted", {
-        greeted: greetingsFactoryFunction.getName()
-    }
-    );
+    let greetedList = Object.keys(greetingsFactoryFunction.getName());
+    console.log(greetedList)  ;
+    res.render("greeted", { name: greetedList}
+    ); 
 
 });
 
-
-
+app.post('/counter/:theUserName',function (req,res){
+let name = req.body.theUserName;
+let counter = greetingsFactoryFunction.verifyNames(name)
+    res.render("counter",{ name, counter    }
+    );
+});
 

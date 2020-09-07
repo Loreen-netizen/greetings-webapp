@@ -8,10 +8,12 @@
 </head>
 
 <body>
-
-    <div class="labelDiv">
-
-        <label id="theGreetLabel" class="inputTag" name="allGreetedPeople">{{greeted}}</label>
+{{#each name}}
+<ul>
+    <li><a href="/counter/{{this}}">{{this}}</a></li>
+</ul>
+    
+{{/each }}
 
     </div>
 </body>
@@ -19,4 +21,3 @@
 </html>
 
 
-{{!-- git push -f heroku master --}}
