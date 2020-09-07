@@ -66,6 +66,15 @@ var greetingsFactoryFunction = function (names) {
         return allGreeted.length;
     }
 
+    var allNamesArray = function(){
+        let allGreeted = [];
+        for(let property in namesGreeted){
+            allGreeted.push(property);
+        }
+        return allGreeted;
+    }
+    
+
     return {
         numberOfPeopleGreeted,
         greetLanguage,
@@ -74,6 +83,7 @@ var greetingsFactoryFunction = function (names) {
         errorMessageUserName,
         getName,
         greet,
+        allNamesArray,
     }
 };
 
