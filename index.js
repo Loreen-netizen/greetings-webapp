@@ -33,18 +33,22 @@ app.get('/greeted', function (req, res) {
 
     let name = req.body.theUserName;
     let greetedList = Object.keys(greetingsFactoryFunction.getName());
-    // console.log(greetedList)  ;
-    res.render("greeted", { name: greetedList}
-    ); 
+    res.render("greeted", { name: greetedList}); 
 
 });
 
-app.post('/counter/:theUserName',function (req,res){
-let name = req.body.theUserName;
-let counter = greetingsFactoryFunction.verifyNames(name)
-    res.render("counter",{ name, counter    }
-    );
-});
+ app.get('/counter/:theUserName',function (req,res){
+let name = req.params.theUserName;
+// greetingsFactoryFunction.verifyNames(name);
+let namesObject = greetingsFactoryFunction.getName();
+
+let numberOfGreetings = name + " have be" + namesObject[name];
+
+ 
+
+     res.render("counter",{ list : numberOfGreetings}
+     );
+ });
 
 let PORT = process.env.PORT || 3500;
 
