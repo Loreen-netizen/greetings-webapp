@@ -59,7 +59,11 @@ var greetingsFactoryFunction = function (names) {
     }
 
     var numberOfPeopleGreeted = function () {
-        return namesGreeted.length;
+        let allGreeted = [];
+        for(let property in namesGreeted){
+            allGreeted.push(property);
+        }
+        return allGreeted.length;
     }
 
     return {
