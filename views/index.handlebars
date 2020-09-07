@@ -12,12 +12,6 @@ user
 
     <div class="main">
 
-        <div class="counterDiv">
-
-            <label id="counterLabel" class="inputTag"> counter </label>
-
-        </div>
-
         <div class="inputDiv">
             <form action="/greet" method="POST">
                 <input id="userName" placeholder="type your name" class="inputTag" name="theUserName"
@@ -50,7 +44,11 @@ user
 
                 </div>
 
+                 <div class="counterDiv">
 
+            <label id="counterLabel" class="inputTag">  {{count}} </label>
+
+        </div>
 
             </form>
 

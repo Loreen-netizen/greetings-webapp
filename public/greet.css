@@ -78,6 +78,36 @@ display:flex;
 }
 
 
+a {
+    text-decoration:none;
+    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+     font-size: x-large;
+     font-weight: 400;
+
+ }
+ a:hover{
+    color: rgb(255, 118, 225);
+    text-shadow: grey;
+}
+
+ 
+ /* a:visited{
+     color: grey;
+ } */
+
+
+li{
+    list-style: none;
+}
+
+#text{
+    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size: x-large;
+    font-weight: 400;
+
+};
+
+
 
 
 

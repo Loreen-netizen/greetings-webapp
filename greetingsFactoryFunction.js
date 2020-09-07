@@ -1,7 +1,7 @@
 var greetingsFactoryFunction = function () {
     var language = undefined;
     var namesGreeted = {};
-    var counter = 0;
+    // var counter = 0;
 
     var greet = function (name) {
         return "Hello " + name;

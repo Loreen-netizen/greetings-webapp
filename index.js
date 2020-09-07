@@ -22,9 +22,11 @@ app.get("/", function (req, res) {
 app.post("/greet", function (req, res) {
     let name = req.body.theUserName;
     let language = req.body.language;
+    let globalCounter = "Count is "+ greetingsFactoryFunction.numberOfPeopleGreeted()
     res.render("index",
         {
-            greet: greetingsFactoryFunction.greetLanguage(name, language)
+            greet: greetingsFactoryFunction.greetLanguage(name, language),
+            count: globalCounter
         })
 
 });
@@ -33,22 +35,22 @@ app.get('/greeted', function (req, res) {
 
     let name = req.body.theUserName;
     let greetedList = Object.keys(greetingsFactoryFunction.getName());
-    res.render("greeted", { name: greetedList}); 
+    res.render("greeted", { name: greetedList });
 
 });
 
- app.get('/counter/:theUserName',function (req,res){
-let name = req.params.theUserName;
-// greetingsFactoryFunction.verifyNames(name);
-let namesObject = greetingsFactoryFunction.getName();
+app.get('/counter/:theUserName', function (req, res) {
+    let name = req.params.theUserName;
 
-let numberOfGreetings = "Hello, " + name + " has been greeted " + namesObject[name] + " times";
+    let namesObject = greetingsFactoryFunction.getName();
 
- 
+    let numberOfGreetings = "Hello, " + name + " has been greeted " + namesObject[name] + " times";
 
-     res.render("counter",{ list : numberOfGreetings}
-     );
- });
+
+
+    res.render("counter", { list: numberOfGreetings }
+    );
+});
 
 let PORT = process.env.PORT || 3500;
 
