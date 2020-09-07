@@ -40,7 +40,7 @@ describe("greetingsFactoryFunction", function () {
 
     it("should return an array with all usernames", function(){
         let greetFactoryFunction5 = greetingsFactoryFunction();
-        greetFactoryFunction.verifyNames('');
+        greetFactoryFunction5.verifyNames('');
         assert.deepEqual([], greetFactoryFunction5.allNamesArray())
        
 
