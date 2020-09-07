@@ -1,25 +1,26 @@
-var greetingsFactoryFunction = function (names) {
+var greetingsFactoryFunction = function () {
     var language = undefined;
-    var namesGreeted = names || {};
+    var namesGreeted = {};
     var counter = 0;
 
     var greet = function (name) {
         return "Hello " + name;
     };
     var verifyNames = function (name) {
-        if (name === undefined) {
-            return;
-        }
-        else {
+        if (name) {
+        
             var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-
-            if (theName) {
-                return namesGreeted.theName = 1;
+ 
+            if (namesGreeted[theName] === undefined) {
+                namesGreeted[theName] = 1;
             }
-            else { return namesGreeted.theName = counter++ };
+            else {
+                 namesGreeted[theName]++ 
+            };
         }
-
     };
+
+    
 
     var greetLanguage = function (name, language) {
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
@@ -59,19 +60,11 @@ var greetingsFactoryFunction = function (names) {
     }
 
     var numberOfPeopleGreeted = function () {
-        let allGreeted = [];
-        for(let property in namesGreeted){
-            allGreeted.push(property);
-        }
-        return allGreeted.length;
+        return Object.keys(namesGreeted).length;
     }
 
     var allNamesArray = function(){
-        let allGreeted = [];
-        for(let property in namesGreeted){
-            allGreeted.push(property);
-        }
-        return allGreeted;
+        return Object.keys(namesGreeted);
     }
     
 

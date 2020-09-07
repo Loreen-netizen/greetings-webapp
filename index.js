@@ -2,7 +2,6 @@ let express = require("express");
 let app = express();
 let bodyParser = require("body-parser");
 let handlebars = require("express-handlebars");
-let PORT = process.env.PORT || 3500;
 let GreetingsFactoryFunction = require("./greetingsFactoryFunction");
 let greetingsFactoryFunction = GreetingsFactoryFunction();
 
@@ -12,9 +11,6 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-app.listen(PORT, function () {
-    console.log("App starting on port", PORT)
-});
 
 app.get("/", function (req, res) {
 
@@ -37,7 +33,7 @@ app.get('/greeted', function (req, res) {
 
     let name = req.body.theUserName;
     let greetedList = Object.keys(greetingsFactoryFunction.getName());
-    console.log(greetedList)  ;
+    // console.log(greetedList)  ;
     res.render("greeted", { name: greetedList}
     ); 
 
@@ -49,4 +45,13 @@ let counter = greetingsFactoryFunction.verifyNames(name)
     res.render("counter",{ name, counter    }
     );
 });
+
+let PORT = process.env.PORT || 3500;
+
+app.listen(PORT, function () {
+    console.log("App starting on port", PORT)
+});
+
+
+
 

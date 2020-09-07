@@ -27,8 +27,8 @@ describe("greetingsFactoryFunction", function () {
     it("should push a new username into an array", function () {
 
         let greetFactoryFunction = greetingsFactoryFunction();
-        let greetTiti = greetFactoryFunction.verifyNames("Titi");
-        assert.deepEqual(["Titi"], greetFactoryFunction.allNamesArray(greetTiti));
+        greetFactoryFunction.verifyNames("Titi");
+        assert.deepEqual(["Titi"], greetFactoryFunction.allNamesArray());
     });
 
     it("should return error message if language is not selected", function () {
