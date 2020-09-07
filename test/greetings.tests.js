@@ -31,11 +31,11 @@ describe("greetingsFactoryFunction", function () {
         assert.deepEqual(["Titi"], greetFactoryFunction.allNamesArray());
     });
 
-    it("should return error message if language is not selected", function () {
+    // it("should return error message if language is not selected", function () {
 
-        let greetFactoryFunction4 = greetingsFactoryFunction();
-        assert.equal("Please select language", greetFactoryFunction4.errorMessageLanguage())
-    });
+    //     let greetFactoryFunction4 = greetingsFactoryFunction();
+    //     assert.equal("Please select language", greetFactoryFunction4.errorMessageLanguage())
+    // });
 
 
     it("should return an array with all usernames", function(){

@@ -36,28 +36,28 @@ var greetingsFactoryFunction = function () {
             return ("Hello " + caseName + "!")
         }
         else if (language === undefined || language === null) {
-            return "Please select language!"
+            // return "Please select language!"
         }
     }
 
 
-    var errorMessageLanguage = function () {
-        if (language === null || language === undefined) {
-            return "Please select language"
-        }
+    // var errorMessageLanguage = function () {
+    //     if (language === null || language === undefined) {
+    //         return "Please select language"
+    //     }
 
-    };
+    // };
 
     var getName = function () {
 
         return namesGreeted;
     };
 
-    var errorMessageUserName = function (name) {
-        if (name === "") {
-            return "Please enter userName"
-        }
-    }
+    // var errorMessageUserName = function (name) {
+    //     if (name === "") {
+    //         return "Please enter userName"
+    //     }
+    // }
 
     var numberOfPeopleGreeted = function () {
         return Object.keys(namesGreeted).length;
@@ -72,8 +72,8 @@ var greetingsFactoryFunction = function () {
         numberOfPeopleGreeted,
         greetLanguage,
         verifyNames,
-        errorMessageLanguage,
-        errorMessageUserName,
+        // errorMessageLanguage,
+        // errorMessageUserName,
         getName,
         greet,
         allNamesArray,
