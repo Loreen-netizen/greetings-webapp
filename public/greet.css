@@ -107,6 +107,14 @@ li{
 
 };
 
+#error{
+    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+    font-size: x-large;
+    font-weight: 400;
+    background-color: red;
+
+}
+
 
 
 

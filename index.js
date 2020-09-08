@@ -9,17 +9,20 @@ let session = require('express-session');
 
 app.engine('handlebars', handlebars({ layoutsDir: "./views/layouts" }));
 app.set('view engine', 'handlebars');
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json());
 
 app.use(session({
-    secret: 'my secret string Yeu',
+    secret: 'express flash string',
     resave: false,
     saveUninitialized: true
 }));
 
 app.use(flash());
+
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
+
 
 app.get("/addFlash", function (req, res) {
     req.flash('info', 'flash Message added')
@@ -37,26 +40,28 @@ app.get("/", function (req, res) {
 app.post("/greet", function (req, res) {
     let name = req.body.theUserName;
     let language = req.body.language;
-    let globalCounter = "Count is " + greetingsFactoryFunction.numberOfPeopleGreeted()
+    
     console.log(req.body.language);
 
-    if (name === '' && language === undefined) {
-        req.flash('error', 'Please enter name and select language!')
-    }
-    else if (language  === undefined) {
-        req.flash('error', 'Please enter user name!')
+    if (name === ''){
+        req.flash('error', 'Please enter user name' )
 
     }
-    else if (name === '') {
-        req.flash('error', 'Please enter user name and language!')
+    
+    else if (language === undefined && name != '') {
+        req.flash('error', 'Please select language!')
 
     }
+    
     else {
         greetingsFactoryFunction.greetLanguage(name, language)
     }
+
+    let globalCounter = "Count is " + greetingsFactoryFunction.numberOfPeopleGreeted()
+
     res.render("index",
         {
-            greet: greetingsFactoryFunction.greetLanguage(name, language) ,
+            greet: greetingsFactoryFunction.greetLanguage(name, language),
             count: globalCounter
 
         });
