@@ -1,205 +1,182 @@
 /* ================================================BODY============================================================= */
 
-.main{
+.main {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-self: center;
     align-items: center;
-  
 }
 
-#theGreetLabel{
-         font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-            font-size:x-large;
-            font-weight: 350;
-            
-        }
-        
+#theGreetLabel {
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+    font-size: xxx-large;
+    font-weight: 450;
+    padding-bottom: 2em;
+    color: #ff94a7;
+}
 
-        .labelDiv{
-            margin: 3em;
-            padding: 2em;
-            justify-content: center;
-            display:flex;
-            width: 14%;
-            justify-self: center;
-            background-color: rgb(228, 215, 209);border: lightgrey solid 1px;
-        }
+.labelDiv {
+    margin: 3em;
+    padding: 2em;
+    justify-content: center;
+    display: flex;
+    width: 14%;
+    justify-self: center;
+    background-color: rgb(228, 215, 209);
+    border: lightgrey solid 1px;
+}
 
-
-#counterLabel{
-    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-    font-size:xx-large;
+#counterLabel {
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+    font-size: xx-large;
     font-weight: 200;
-    margin:1em;
-
-}
-.counterDiv{
-display: flex;
+    margin: 1em;
+    padding-left: 1.3em;
 }
 
-#userName{
-    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-    font-size:large;
+.counterDiv {
+    display: flex;
+}
+
+#userName {
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+    font-size: large;
     font-weight: 250;
-    margin:1em;
-    
-    
+    margin: 1em;
 }
 
-.inputDiv{
-display:flex;
+#greetbtn {
+    margin-left: 5.5em;
+    margin-top: 1.5em;
 }
 
-.languageDiv{
-    display:flex;
-    flex:1;
-    margin-top:1em;
-    padding:1em;
-        font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-        font-size: large;
-        font-weight: 200;
-    }
+.inputDiv {
+    display: flex;
+}
 
-.buttonTag{
- background-color: rgb(228, 215, 209);
-  font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+.languageDiv {
+    display: flex;
+    flex: 1;
+    margin-top: 1em;
+    padding: 1em;
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
     font-size: large;
     font-weight: 200;
 }
 
-.buttons{
-     display:flex;
-   
+.buttonTag {
+    background-color: rgb(228, 215, 209);
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+    font-size: large;
+    font-weight: 200;
 }
 
-#resetCounterButton{
-    margin-left:1em;
+.buttons {
+    display: flex;
 }
 
+#resetCounterButton {
+    margin-left: 1em;
+}
 
 a {
-    text-decoration:none;
-    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-     font-size: x-large;
-     font-weight: 400;
+    text-decoration: none;
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+    font-size: x-large;
+    font-weight: 400;
+}
 
- }
- a:hover{
+a:hover {
     color: rgb(255, 118, 225);
     text-shadow: grey;
 }
 
- 
- /* a:visited{
-     color: grey;
- } */
-
-
-li{
+li {
     list-style: none;
 }
 
-#text{
-    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
+#text {
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
     font-size: x-large;
     font-weight: 400;
-
-};
-
-#error{
-    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-    font-size: x-large;
-    font-weight: 400;
-    background-color: red;
-
 }
 
-
-
+.err {
+    font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+    font-size: x-large;
+    font-weight: 400;
+    color: rgb(255, 51, 51);
+}
 
 
 /* ==================================MEDIA QUEIRIES================================================= */
 
-@media(max-width:650px){
-    .main{
-      display: inline-block;
-      width: auto;
-    }
-
-}
-
-@media(max-width:650px){
-   
-        #userName{
-    font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-    font-size:x-large;
-    font-weight: 300;
-   padding:0;
-   margin:auto;
-   width:50%;
-    
-    
-}
-       
-    }
-    @media(max-width:650px){
-   
-       .inputDiv{
-
-  padding-left: 0;
-}
-       
-    }
-
-    @media(max-width:1741px){
-        .labelDiv{
-            background-color: white;
-            padding:0;
-            border: none; 
-            background-color: rgb(228, 215, 209);border: lightgrey solid 1px;
-           
-        }
-    }
-
-    @media(max-width:650px){
-        .labelDiv{
-            text-align: center;
-            padding: 1em;
-            margin: auto;
-            border: none;
-             background-color: rgb(228, 215, 209);border: lightgrey solid 1px;
-        }
-    }
-
-
-@media(max-width:650px){
-    #counterLabel{
- font-family:  Ubuntu, 'Helvetica Neue', sans-serif ;
-    font-size:x-large;
-    font-weight: 200;
-   padding:1em;
-    margin:auto;
-    
+@media(max-width:650px) {
+    .main {
+        display: inline-block;
+        width: auto;
     }
 }
 
-
-
-@media(max-width:650px){
-
-.languageDiv{
-    display: column;
-     margin: 1em;
-   
+@media(max-width:650px) {
+    #userName {
+        font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+        font-size: x-large;
+        font-weight: 300;
+        padding: 0;
+        margin: auto;
+        width: 50%;
+    }
 }
+
+@media(max-width:650px) {
+    .inputDiv {
+        padding-left: 0;
+    }
 }
 
-  
-@media(max-width:650px){
-   .buttons{
-     display:column;
-    padding: 0;
-    margin:3em;
+@media(max-width:1741px) {
+    .labelDiv {
+        background-color: white;
+        padding: 0;
+        border: none;
+        background-color: rgb(228, 215, 209);
+        border: lightgrey solid 1px;
+    }
 }
+
+@media(max-width:650px) {
+    .labelDiv {
+        text-align: center;
+        padding: 1em;
+        margin: auto;
+        border: none;
+        background-color: rgb(228, 215, 209);
+        border: lightgrey solid 1px;
+    }
+}
+
+@media(max-width:650px) {
+    #counterLabel {
+        font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+        font-size: x-large;
+        font-weight: 200;
+        padding: 1em;
+        margin: auto;
+    }
+}
+
+@media(max-width:650px) {
+    .languageDiv {
+        display: column;
+        margin: 1em;
+    }
+}
+
+@media(max-width:650px) {
+    .buttons {
+        display: column;
+        padding: 0;
+        margin: 3em;
+    }
 }

@@ -10,59 +10,65 @@
 
 <body>
 
-    <div class="main">
+    <div class="main ">
+
+         <div class="err">{{messages.error}}</div>
+
 
         <div class="inputDiv">
             <form action="/greet" method="POST">
                 <input id="userName" placeholder="type your name" class="inputTag" name="theUserName"
                     value="{{greet.theUserName}}"> </input>
 
-                <div class="buttons">
+              
+                <div class="languageDiv">
+                    <label class="languageLabels">
+
+                        <input type="radio" name="language" value="English">
+                        English
+                    </label>
+
+
+                    <label class="languageLabels">
+
+                        <input type="radio" name="language" value="Shona">
+                        Shona
+                    </label>
+
+                    <label class="languageLabels">
+
+                        <input type="radio" name="language" value="Ndebele">
+                        Ndebele
+                    </label>
+
+                   
+                </div>
+
+                  <div class="buttons">
 
                     <button id="greetbtn" class="buttonTag" type="submit"> greet me</button>
 
 
                 </div>
-                <div class="languageDiv">
-                    <label class="languageLabels">
-                        English
-                        <input type="radio" name="language" value="English">
-                    </label>
 
+                <div class="counterDiv">
 
-                    <label class="languageLabels">
-                        Shona
-                        <input type="radio" name="language" value="Shona">
-                    </label>
-
-                    <label class="languageLabels">
-                        Ndebele
-                        <input type="radio" name="language" value="Ndebele">
-                    </label>
-
-                    <input type="submit">
+                    <label id="counterLabel" class="inputTag"> {{count}} </label>
 
                 </div>
-
-                 <div class="counterDiv">
-
-            <label id="counterLabel" class="inputTag">  {{count}} </label>
-
-        </div>
 
             </form>
 
         </div>
 
-        <form action="/userLanguage" method="POST">
+        <div>
+           
+        </div>
+        {{!-- <div class="labelDiv"> --}}
 
-            <div class="labelDiv">
+            <label id="theGreetLabel" class="inputTag" name="greetingsMessage">{{greet}}</label>
 
-                <label id="theGreetLabel" class="inputTag" name="greetingsMessage">{{greet}}</label>
-                <label   id="error">{{messages.error}}</label>
-
-            </div>
-        </form>
+        {{!-- </div> --}}
 
 
         <form action="/greeted" , method="GET">
