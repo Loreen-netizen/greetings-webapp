@@ -24,50 +24,45 @@ app.use(bodyParser.json());
 
 
 
-app.get("/addFlash", function (req, res) {
+app.get("/addFlash", function(req, res) {
     req.flash('info', 'flash Message added')
     res.redirect('/')
 });
 
 
-app.get("/", function (req, res) {
+app.get("/", function(req, res) {
 
     let name = req.body.theUserName;
 
     res.render("index");
 });
 
-app.post("/greet", function (req, res) {
+app.post("/greet", function(req, res) {
     let name = req.body.theUserName;
     let language = req.body.language;
-    
+
     console.log(req.body.language);
 
-    if (name === ''){
-        req.flash('error', 'Please enter user name' )
+    if (name === '') {
+        req.flash('error', 'Please enter user name')
 
-    }
-    
-    else if (language === undefined && name != '') {
+    } else if (language === undefined && name != '') {
         req.flash('error', 'Please select language!')
 
-    }
-    
-    else {
+    } else {
         greetingsFactoryFunction.greetLanguage(name, language)
     }
 
     let globalCounter = "Count is " + greetingsFactoryFunction.numberOfPeopleGreeted()
 
-    res.render("index",
-        {
-            greet: greetingsFactoryFunction.greetLanguage(name, language),
-            count: globalCounter
+    res.render("index", {
+        greet: greetingsFactoryFunction.greetLanguage(name, language),
+        count: globalCounter
 
-        });
+    });
 });
 
-app.get('/greeted', function (req, res) {
+app.get('/greeted', function(req, res) {
 
     let name = req.body.theUserName;
     let greetedList = Object.keys(greetingsFactoryFunction.getName());
@@ -75,7 +70,7 @@ app.get('/greeted', function (req, res) {
 
 });
 
-app.get('/counter/:theUserName', function (req, res) {
+app.get('/counter/:theUserName', function(req, res) {
     let name = req.params.theUserName;
 
     let namesObject = greetingsFactoryFunction.getName();
@@ -84,16 +79,11 @@ app.get('/counter/:theUserName', function (req, res) {
 
 
 
-    res.render("counter", { list: numberOfGreetings }
-    );
+    res.render("counter", { list: numberOfGreetings });
 });
 
 let PORT = process.env.PORT || 3500;
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log("App starting on port", PORT)
 });
-
-
-
-
