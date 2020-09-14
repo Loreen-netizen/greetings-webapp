@@ -1,19 +1,18 @@
-var greetingsFactoryFunction = function () {
+var greetingsFactoryFunction = function() {
     var language = undefined;
     var namesGreeted = {};
 
-    var greet = function (name) {
+    var greet = function(name) {
         return "Hello " + name;
     };
-    var verifyNames = function (name) {
+    var verifyNames = function(name) {
         if (name) {
 
             var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
             if (namesGreeted[theName] === undefined) {
-                namesGreeted[theName] = 1;
-            }
-            else {
+                namesGreeted[theName] = 0;
+            } else {
                 namesGreeted[theName]++
             };
         }
@@ -21,7 +20,7 @@ var greetingsFactoryFunction = function () {
 
 
 
-    var greetLanguage = function (name, language) {
+    var greetLanguage = function(name, language) {
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
         verifyNames(caseName);
@@ -38,16 +37,16 @@ var greetingsFactoryFunction = function () {
     };
 
 
-    var getName = function () {
+    var getName = function() {
 
         return namesGreeted;
     };
 
-    var numberOfPeopleGreeted = function () {
+    var numberOfPeopleGreeted = function() {
         return Object.keys(namesGreeted).length;
     }
 
-    var allNamesArray = function () {
+    var allNamesArray = function() {
         return Object.keys(namesGreeted);
     }
 
