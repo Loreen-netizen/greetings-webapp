@@ -1,21 +1,59 @@
 var greetingsFactoryFunction = function() {
+
+    const pg = require("pg");
+    const Pool = pg.Pool;
+    const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/kitten_inn';
+    const pool = new Pool({
+        connectionString
+    });
+
+
     var language = undefined;
     var namesGreeted = {};
 
-    var greet = function(name) {
-        return "Hello " + name;
+    // var greet = function(name) {
+    //     return "Hello " + name;
+    // };
+
+    var checkNames = function(name) {
+        let allNames = `SELECT name
+        FROM greet
+        WHERE name = $1 [name]`
+
+        return allNames
     };
-    var verifyNames = function(name) {
-        if (name) {
 
-            var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    let insertNameQuery = async function(name) {
 
-            if (namesGreeted[theName] === undefined) {
-                namesGreeted[theName] = 0;
-            } else {
-                namesGreeted[theName]++
-            };
-        }
+        "insert into greet (name, count) values ($1, 1)";
+        await pool.query(insertNameQuery, [name]);
+
+    }
+
+    let updateCounter = function(name) {
+
+        `UPDATE greet 
+        SET count += 1
+        WHERE name = $1  [name]`
+
+
+    }
+
+
+
+    var verifyNames = async function(name) {
+        var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+
+        var nameRows = allNames(theName)
+
+        if (nameRows.rows === 0) {
+            insertNameQuery(theName)
+
+        } else {
+            updateCounter(theName)
+            return fetchCount(theName)
+        };
+
     };
 
 
@@ -42,8 +80,11 @@ var greetingsFactoryFunction = function() {
         return namesGreeted;
     };
 
-    var numberOfPeopleGreeted = function() {
-        return Object.keys(namesGreeted).length;
+    var numberOfPeopleGreeted = function(name) {
+        let count = `SELECT count
+        FROM greet
+        WHERE name = [name]`
+        return count
     }
 
     var allNamesArray = function() {
@@ -56,8 +97,9 @@ var greetingsFactoryFunction = function() {
         greetLanguage,
         verifyNames,
         getName,
-        greet,
+        // greet,
         allNamesArray,
+        checkNames,
     }
 };
 
