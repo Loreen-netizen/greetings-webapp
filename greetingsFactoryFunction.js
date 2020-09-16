@@ -12,7 +12,7 @@ var greetingsFactoryFunction = function() {
 
     var checkNames = async function(name) {
         let isName = await pool.query(`SELECT name
-        FROM greet
+        FROM users
         WHERE name = $1`, [name])
 
         return isName
@@ -20,14 +20,14 @@ var greetingsFactoryFunction = function() {
 
     let insertNameQuery = async function(name) {
         let insertQuery =
-            "insert into greet (name, counter) values ($1, 1)";
+            "insert into users (name, counter) values ($1, 1)";
         await pool.query(insertQuery, [name]);
 
     }
 
     let updateCounter = async function(name) {
 
-        await pool.query(`UPDATE greet 
+        await pool.query(`UPDATE users
         SET counter = counter + 1
         WHERE name = $1 `, [name])
     }
@@ -72,7 +72,7 @@ var greetingsFactoryFunction = function() {
     // };
 
     var numberOfPeopleGreeted = async function() {
-        let count = await pool.query(`SELECT id FROM greet`)
+        let count = await pool.query(`SELECT id FROM users`)
         return count.rowCount
     }
 
