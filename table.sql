@@ -1,6 +1,5 @@
 create table greet (
-	id INT not null ,
+	id serial not null primary key,
     name text not null,
-	counter int not null default 0,
-	primary key(id)
+	counter int not null default 0
 );

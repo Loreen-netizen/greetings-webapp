@@ -2,41 +2,34 @@ var greetingsFactoryFunction = function() {
 
     const pg = require("pg");
     const Pool = pg.Pool;
-    const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/kitten_inn';
+    const connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
     const pool = new Pool({
         connectionString
     });
 
 
     var language = undefined;
-    var namesGreeted = {};
 
-    // var greet = function(name) {
-    //     return "Hello " + name;
-    // };
-
-    var checkNames = function(name) {
-        let allNames = `SELECT name
+    var checkNames = async function(name) {
+        let isName = await pool.query(`SELECT name
         FROM greet
-        WHERE name = $1 [name]`
+        WHERE name = $1`, [name])
 
-        return allNames
+        return isName
     };
 
     let insertNameQuery = async function(name) {
-
-        "insert into greet (name, count) values ($1, 1)";
-        await pool.query(insertNameQuery, [name]);
+        let insertQuery =
+            "insert into greet (name, counter) values ($1, 1)";
+        await pool.query(insertQuery, [name]);
 
     }
 
-    let updateCounter = function(name) {
+    let updateCounter = async function(name) {
 
-        `UPDATE greet 
-        SET count += 1
-        WHERE name = $1  [name]`
-
-
+        await pool.query(`UPDATE greet 
+        SET counter = counter + 1
+        WHERE name = $1 `, [name])
     }
 
 
@@ -44,24 +37,22 @@ var greetingsFactoryFunction = function() {
     var verifyNames = async function(name) {
         var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
-        var nameRows = allNames(theName)
-
-        if (nameRows.rows === 0) {
-            insertNameQuery(theName)
+        var nameRows = await checkNames(theName)
+        if (nameRows.rowCount === 0) {
+            await insertNameQuery(theName)
 
         } else {
-            updateCounter(theName)
-            return fetchCount(theName)
-        };
+            await updateCounter(theName)
 
+        };
     };
 
 
 
-    var greetLanguage = function(name, language) {
+    var greetLanguage = async function(name, language) {
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
-        verifyNames(caseName);
+        await verifyNames(caseName);
         if (language === "Shona" && name != "") {
             return ("Hesi Kani " + caseName + "!")
         }
@@ -75,30 +66,28 @@ var greetingsFactoryFunction = function() {
     };
 
 
-    var getName = function() {
+    // var getName = function() {
 
-        return namesGreeted;
-    };
+    //     return namesGreeted;
+    // };
 
-    var numberOfPeopleGreeted = function(name) {
-        let count = `SELECT count
-        FROM greet
-        WHERE name = [name]`
-        return count
+    var numberOfPeopleGreeted = async function() {
+        let count = await pool.query(`SELECT id FROM greet`)
+        return count.rowCount
     }
 
-    var allNamesArray = function() {
-        return Object.keys(namesGreeted);
-    }
+    // var allNamesArray = function() {
+    //     return Object.keys(namesGreeted);
+    // }
 
 
     return {
         numberOfPeopleGreeted,
         greetLanguage,
         verifyNames,
-        getName,
+        // getName,
         // greet,
-        allNamesArray,
+        // allNamesArray,
         checkNames,
     }
 };
