@@ -75,10 +75,10 @@ app.post("/greet", async function(req, res) {
     }
 });
 
-app.get('/greeted', function(req, res) {
+app.get('/greeted', async function(req, res) {
     try {
-        let name = req.body.theUserName;
-        let greetedList = Object.keys(greetingsFactoryFunction.getName());
+        let name = await req.body.theUserName;
+        let greetedList = await greetingsFactoryFunction.getNames();
         res.render("greeted", { name: greetedList });
     } catch (error) {
         console.log(error)
@@ -86,11 +86,11 @@ app.get('/greeted', function(req, res) {
 
 });
 
-app.get('/counter/:theUserName', function(req, res) {
+app.get('/counter/:theUserName', async function(req, res) {
     try {
         let name = req.params.theUserName;
 
-        let namesObject = greetingsFactoryFunction.getName();
+        let namesObject = await greetingsFactoryFunction.getNames();
 
         let numberOfGreetings = "Hello, " + name + " has been greeted " + namesObject[name] + " times";
 
