@@ -69,13 +69,21 @@ var greetingsFactoryFunction = function() {
     var getNames = async function() {
 
         let allNames = await pool.query(`SELECT name FROM users`)
-        console.log(allNames.rows)
         return allNames.rows;
+    };
+
+    var countPerName = async function(name) {
+
+        var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        var nameString = caseName.toString();
+        let countPerUser = await pool.query(`SELECT counter FROM users WHERE name = $1`, [nameString])
+            // console.log(countPerUser)
+        return countPerUser.rows;
     };
 
     var numberOfPeopleGreeted = async function() {
         let count = await pool.query(`SELECT id FROM users`)
-        return count.rowCount
+        return "Count is " + count.rowCount
     }
 
     // var allNamesArray = function() {
@@ -91,6 +99,7 @@ var greetingsFactoryFunction = function() {
         // greet,
         // allNamesArray,
         checkNames,
+        countPerName,
     }
 };
 
