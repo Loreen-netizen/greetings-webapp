@@ -14,7 +14,6 @@ var greetingsFactoryFunction = function() {
         let isName = await pool.query(`SELECT name
         FROM users
         WHERE name = $1`, [name])
-
         return isName
     };
 
@@ -75,10 +74,14 @@ var greetingsFactoryFunction = function() {
     var countPerName = async function(name) {
 
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        var nameString = caseName.toString();
-        let countPerUser = await pool.query(`SELECT counter FROM users WHERE name = $1`, [nameString])
-            // console.log(countPerUser)
-        return countPerUser.rows;
+
+        let countPerUser = await pool.query(`SELECT counter
+        FROM users
+        WHERE name = $1`, [caseName])
+
+        // console.log(countPerUser.rows)
+        if (countPerUser) { return Object.keys(countPerUser.rows) } else { console.log("namenotgreeted") }
+
     };
 
     var numberOfPeopleGreeted = async function() {
