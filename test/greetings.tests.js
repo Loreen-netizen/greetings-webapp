@@ -1,21 +1,9 @@
 let greetingsFactoryFunction = require("../greetingsFactoryFunction.js");
 let assert = require("assert");
-describe("greetingsFactoryFunction", function () {
-    
-    it("should greet Yeu", function () {
+describe("greetingsFactoryFunction", function() {
 
-        let greetFactoryFunction = greetingsFactoryFunction();
-        assert.equal("Hello Yeu", greetFactoryFunction.greet("Yeu"))
-    });
 
-    it("should return 1 when one person is greeted", function () {
-
-        let greetFactoryFunction1 = greetingsFactoryFunction();
-        let peopleGreeted = greetFactoryFunction1.verifyNames("Loreen")
-        assert.equal(1, greetFactoryFunction1.numberOfPeopleGreeted(peopleGreeted))
-    });
-
-    it("should greet people in 3 different languages", function () {
+    it("should greet people in 3 different languages", function() {
 
         let greetFactoryFunction2 = greetingsFactoryFunction();
 
@@ -24,7 +12,16 @@ describe("greetingsFactoryFunction", function () {
         assert.equal("Sawubona Joey!", greetFactoryFunction2.greetLanguage("Joey", "Ndebele"))
     });
 
-    it("should push a new username into an array", function () {
+    it("should return 1 when one person is greeted", function() {
+
+        let greetFactoryFunction1 = greetingsFactoryFunction();
+        let peopleGreeted = greetFactoryFunction1.verifyNames("Loreen")
+        assert.equal(1, greetFactoryFunction1.numberOfPeopleGreeted(peopleGreeted))
+    });
+
+
+
+    it("should push a new username into an array", function() {
 
         let greetFactoryFunction = greetingsFactoryFunction();
         greetFactoryFunction.verifyNames("Titi");
@@ -38,29 +35,29 @@ describe("greetingsFactoryFunction", function () {
     // });
 
 
-    it("should return an array with all usernames", function(){
+    it("should return an array with all usernames", function() {
         let greetFactoryFunction5 = greetingsFactoryFunction();
         greetFactoryFunction5.verifyNames('');
         assert.deepEqual([], greetFactoryFunction5.allNamesArray())
-       
+
 
     });
 
-    it("should be able to return number of people greeted", function(){
+    it("should be able to return number of people greeted", function() {
         let greetFactoryFunction6 = greetingsFactoryFunction();
         assert.equal(0, greetFactoryFunction6.numberOfPeopleGreeted())
-       
+
 
     });
-   
 
-    it("should return error message when user name has not been entered", function(){
+
+    it("should return error message when user name has not been entered", function() {
         let greetFactoryFunction7 = greetingsFactoryFunction();
-       
+
         assert.equal("Please enter userName", greetFactoryFunction7.errorMessageUserName(""))
-       
+
 
     });
-   
+
 
 });

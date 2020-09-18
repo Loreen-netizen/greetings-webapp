@@ -7,6 +7,13 @@ let greetingsFactoryFunction = GreetingsFactoryFunction();
 let flash = require('express-flash');
 let session = require('express-session');
 
+let pg = require("pg");
+let Pool = pg.Pool;
+let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
+let pool = new Pool({
+    connectionString
+});
+
 app.engine('handlebars', handlebars({ layoutsDir: "./views/layouts" }));
 app.set('view engine', 'handlebars');
 

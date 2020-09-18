@@ -1,13 +1,4 @@
 var greetingsFactoryFunction = function() {
-    let ownProps = [];
-    let prototypeProps = [];
-    const pg = require("pg");
-    const Pool = pg.Pool;
-    const connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
-    const pool = new Pool({
-        connectionString
-    });
-
 
     var language = undefined;
 
