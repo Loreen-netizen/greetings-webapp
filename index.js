@@ -93,7 +93,7 @@ app.get('/counter/:theUserName', async function(req, res) {
         let userCount = await greetingsFactoryFunction.countPerName(name);
 
         console.log(userCount)
-        let numberOfGreetings = "Hello, " + name + " has been greeted " + await userCount + " times";
+        let numberOfGreetings = "Hello, " + name + " has been greeted " + userCount + " times";
 
 
 
@@ -104,7 +104,7 @@ app.get('/counter/:theUserName', async function(req, res) {
 
 });
 
-let PORT = process.env.PORT || 3500;
+let PORT = process.env.PORT || 3502;
 
 app.listen(PORT, function() {
     console.log("App starting on port", PORT)

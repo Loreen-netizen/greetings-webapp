@@ -80,20 +80,9 @@ var greetingsFactoryFunction = function() {
         FROM users
         WHERE name = $1`, [caseName])
 
-        let individualCounter = await countPerUser.rows;
 
-        // for (let props in individualCounter) {
 
-        //     if (individualCounter.hasOwnProperty(props)) {
-        //         ownProps.push(props);
-        //     } else { prototypeProps.push(props) }
-        //     console.log(ownProps)
-        //     console.log(prototypeProps)
-        //     console.log(individualCounter)
-        // }
-
-        let count = await individualCounter[0].counter;
-        if (countPerUser) { return (count) } else { console.log("namenotgreeted") }
+        if (countPerUser.rows.length > 0) { return (countPerUser.rows[0].counter) } else { console.log("namenotgreeted") }
 
     };
 
