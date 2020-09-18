@@ -93,7 +93,7 @@ app.get('/counter/:theUserName', async function(req, res) {
         let userCount = await greetingsFactoryFunction.countPerName(name);
 
         console.log(userCount)
-        let numberOfGreetings = "Hello, " + name + " has been greeted " + await Object.keys(userCount) + " times";
+        let numberOfGreetings = "Hello, " + name + " has been greeted " + await userCount + " times";
 
 
 

@@ -1,5 +1,6 @@
 var greetingsFactoryFunction = function() {
-
+    let ownProps = [];
+    let prototypeProps = [];
     const pg = require("pg");
     const Pool = pg.Pool;
     const connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
@@ -79,8 +80,20 @@ var greetingsFactoryFunction = function() {
         FROM users
         WHERE name = $1`, [caseName])
 
-        // console.log(countPerUser.rows)
-        if (countPerUser) { return Object.keys(countPerUser.rows) } else { console.log("namenotgreeted") }
+        let individualCounter = await countPerUser.rows;
+
+        // for (let props in individualCounter) {
+
+        //     if (individualCounter.hasOwnProperty(props)) {
+        //         ownProps.push(props);
+        //     } else { prototypeProps.push(props) }
+        //     console.log(ownProps)
+        //     console.log(prototypeProps)
+        //     console.log(individualCounter)
+        // }
+
+        let count = await individualCounter[0].counter;
+        if (countPerUser) { return (count) } else { console.log("namenotgreeted") }
 
     };
 
