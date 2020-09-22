@@ -1,8 +1,13 @@
 var greetingsFactoryFunction = function() {
 
     var language = undefined;
+
     let pg = require("pg");
     let pool = pg.Pool;
+    let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
+    let pool = new Pool({
+        connectionString
+    });
 
     var checkNames = async function(name) {
         let isName = await pool.query(`SELECT name
