@@ -1,6 +1,8 @@
 var greetingsFactoryFunction = function() {
 
     var language = undefined;
+    let pg = require("pg");
+    let Pool = pg.Pool;
 
     var checkNames = async function(name) {
         let isName = await pool.query(`SELECT name
