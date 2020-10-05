@@ -9,14 +9,22 @@ let pool = new Pool({
 describe("greetingsFactoryFunction", function() {
 
 
-    it("should greet people in 3 different languages", async function() {
+    // it("should greet people in 3 different languages", async function() {
+
+    //     let greetFactoryFunction2 = greetingsFactoryFunction();
+
+    //     assert.equal("Hesi Kani Yeu!", await greetFactoryFunction2.greetLanguage("Yeu", "Shona"));
+    //     assert.equal("Hello Hlosani!", await greetFactoryFunction2.greetLanguage("Hlosani", "English"));
+    //     assert.equal("Sawubona Joey!", await greetFactoryFunction2.greetLanguage("Joey", "Ndebele"))
+    // });
+
+    it("should be able to check if a name is already in the database", async function() {
 
         let greetFactoryFunction2 = greetingsFactoryFunction();
 
-        assert.equal("Hesi Kani Yeu!", await greetFactoryFunction2.greetLanguage("Yeu", "Shona"));
-        assert.equal("Hello Hlosani!", await greetFactoryFunction2.greetLanguage("Hlosani", "English"));
-        assert.equal("Sawubona Joey!", await greetFactoryFunction2.greetLanguage("Joey", "Ndebele"))
+        assert.equal("Lilli", await greetFactoryFunction2.checkNames("Lilli"))
     });
+
 
     it("should return 1 when one person is greeted", async function() {
 
