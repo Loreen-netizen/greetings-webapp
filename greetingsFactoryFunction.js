@@ -68,6 +68,7 @@ var greetingsFactoryFunction = function() {
     var getNames = async function() {
 
         let allNames = await pool.query(`SELECT name FROM users`)
+            // console.log(allNames.rows)
         return allNames.rows;
     };
 
