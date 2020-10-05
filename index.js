@@ -32,82 +32,83 @@ app.use(bodyParser.json());
 
 
 app.get("/addFlash", function(req, res) {
-    try {
-        req.flash('info', 'flash Message added')
-        res.redirect('/')
-    } catch (error) {
-        console.log(error)
-    }
+    // try {
+    req.flash('info', 'flash Message added')
+    res.redirect('/')
+        // }
+        //  catch (error) {
+        //     console.log(error)
+        // }
 });
 
 
 app.get("/", function(req, res) {
-    try {
-        let name = req.body.theUserName;
+    // try {
+    let name = req.body.theUserName;
 
-        res.render("index");
-    } catch (error) {
-        console.log(error)
-    }
+    res.render("index");
+    // } catch (error) {
+    //     console.log(error)
+    // }
 });
 
 app.post("/greet", async function(req, res) {
-    try {
-        let name = req.body.theUserName;
-        let language = req.body.language;
+    // try {
+    let name = req.body.theUserName;
+    let language = req.body.language;
 
-        console.log(req.body.language);
+    console.log(req.body.language);
 
-        if (name === '') {
-            req.flash('error', 'Please enter user name')
+    if (name === '') {
+        req.flash('error', 'Please enter user name')
 
-        } else if (language === undefined && name != '') {
-            req.flash('error', 'Please select language!')
+    } else if (language === undefined && name != '') {
+        req.flash('error', 'Please select language!')
 
-        } else {
-            var greet = {
-                greet: await greetingsFactoryFunction.greetLanguage(name, language),
-                count: await greetingsFactoryFunction.numberOfPeopleGreeted()
-            }
+    } else {
+        var greet = {
+            greet: await greetingsFactoryFunction.greetLanguage(name, language),
+            count: await greetingsFactoryFunction.numberOfPeopleGreeted()
         }
-
-        let globalCounter = "Count is " + await greetingsFactoryFunction.numberOfPeopleGreeted()
-
-        res.render("index", {
-            greet
-
-        });
-    } catch (error) {
-        console.log(error)
     }
+
+    let globalCounter = "Count is " + await greetingsFactoryFunction.numberOfPeopleGreeted()
+
+    res.render("index", {
+        greet
+
+    });
+    // } catch (error) {
+    //     console.log(error)
+    // }
 });
 
 app.get('/greeted', async function(req, res) {
-    try {
-        let name = await req.body.theUserName;
-        let greetedList = await greetingsFactoryFunction.getNames();
-        res.render("greeted", { name: greetedList });
-    } catch (error) {
-        console.log(error)
-    }
+    // try {
+    let name = await req.body.theUserName;
+    let greetedList = await greetingsFactoryFunction.getNames();
+    res.render("greeted", { name: greetedList });
+    // } catch (error) {
+    //     console.log(error)
+    // }
 
 });
 
 app.get('/counter/:theUserName', async function(req, res) {
-    try {
-        let name = req.params.theUserName;
+    // try {
+    let name = req.params.theUserName;
 
-        let userCount = await greetingsFactoryFunction.countPerName(name);
+    let userCount = await greetingsFactoryFunction.countPerName(name);
 
-        console.log(userCount)
-        let numberOfGreetings = "Hello, " + name + " has been greeted " + userCount + " times";
+    console.log(userCount)
+    let numberOfGreetings = "Hello, " + name + " has been greeted " + userCount + " times";
 
 
 
-        res.render("counter", { list: numberOfGreetings });
-    } catch (error) {
-        console.log(error)
-    }
+    res.render("counter", { list: numberOfGreetings });
+    // } catch (error) {
+    //     console.log(error)
+    // }
 
 });
 

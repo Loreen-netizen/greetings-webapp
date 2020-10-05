@@ -2,7 +2,7 @@ let greetingsFactoryFunction = require("../greetingsFactoryFunction.js");
 let assert = require("assert");
 let pg = require("pg");
 let Pool = pg.Pool;
-let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
+let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/test_greetings';
 let pool = new Pool({
     connectionString
 });
@@ -63,12 +63,9 @@ it("should be able to return number of people greeted", async function() {
 
 
 it("should return error message when user name has not been entered", async function() {
-let greetFactoryFunction7 = greetingsFactoryFunction();
+    let greetFactoryFunction7 = greetingsFactoryFunction();
 
-assert.equal("Please enter userName", await greetFactoryFunction7.errorMessageUserName(""))
-
-
-});
+    assert.equal("Please enter userName", await greetFactoryFunction7.errorMessageUserName(""))
 
 
 });
