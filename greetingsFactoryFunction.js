@@ -13,7 +13,8 @@ var greetingsFactoryFunction = function() {
         let isName = await pool.query(`SELECT name
         FROM users
         WHERE name = $1`, [name])
-        return isName
+            // console.log(isName.rows);
+        return isName.rows;
     };
 
     let insertNameQuery = async function(name) {
@@ -98,6 +99,8 @@ var greetingsFactoryFunction = function() {
         getNames,
         checkNames,
         countPerName,
+        insertNameQuery
+
     }
 };
 
