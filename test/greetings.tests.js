@@ -57,13 +57,12 @@ describe("greetingsFactoryFunction", function() {
 
     });
 
-    it("should be able to return number of people greeted", aync
-        function() {
-            let greetFactoryFunction6 = greetingsFactoryFunction();
-            assert.equal(0, await greetFactoryFunction6.numberOfPeopleGreeted())
+    it("should be able to return number of people greeted", async function() {
+        let greetFactoryFunction6 = greetingsFactoryFunction();
+        assert.equal(0, await greetFactoryFunction6.numberOfPeopleGreeted())
 
 
-        });
+    });
 
 
     it("should return error message when user name has not been entered", async function() {
