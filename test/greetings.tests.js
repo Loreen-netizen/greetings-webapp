@@ -45,11 +45,11 @@ describe("greetingsFactoryFunction", async function() {
     it("should save a new username into the database", async function() {
 
         let greetFactoryFunction = greetingsFactoryFunction();
-        let insertQuery = await pool.query("select name from users where name = 'Mandisa'");
-        let insertQ = insertQuery.rows[0];
-        console.log(insertQ);
+        let checkNameQuery = await pool.query("select name from users where name = 'Mandisa'");
+        let checkName = checkNameQuery.rows[0];
+        console.log(checkName);
 
-        assert.equal("{ name: 'Mandisa' }", await greetFactoryFunction.insertNameQuery('Mandisa'));
+        assert.equal(checkName, await greetFactoryFunction.insertNameQuery('Mandisa'));
     });
 
     // it("should return error message if language is not selected", function () {

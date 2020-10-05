@@ -18,9 +18,9 @@ var greetingsFactoryFunction = function() {
     };
 
     let insertNameQuery = async function(name) {
-        let insertQuery =
-            "insert into users (name, counter) values ($1, 1)";
+        let insertQuery = "insert into users (name, counter) values ($1, 1)";
         await pool.query(insertQuery, [name]);
+
 
     }
 
