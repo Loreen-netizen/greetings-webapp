@@ -1,4 +1,4 @@
-let greetingsFactoryFunction = require("../greetingsFactoryFunction.js");
+let GreetingsFactoryFunction = require("../greetingsFactoryFunction.js");
 let assert = require("assert");
 let pg = require("pg");
 let Pool = pg.Pool;
@@ -6,61 +6,90 @@ let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@lo
 let pool = new Pool({
     connectionString
 });
-describe("greetingsFactoryFunction", function() {
 
-    it("should be able to check if a name is already in the database", async function() {
-        let greetFactoryFunction1 = greetingsFactoryFunction();
-        let results = await pool.query(greetFactoryFunction1.checkNames("Lilli"));
+describe("greetingsFactoryFunction", async function() {
+    beforeEach(async function() {
+        await pool.query(`delete from users`)
+    })
 
-        assert.equal("Lilli", results)
+
+    describe("greetingsFactoryFunction", async function() {
+
+        it("should be able to check if a name is already in the database", async function() {
+            // assemble
+            let greetFactoryFunction = GreetingsFactoryFunction(pool);
+            //act
+            await greetFactoryFunction.insertNameQuery("Lilli");
+            // assert
+            assert.deepEqual([{ name: 'Lilli' }], await greetFactoryFunction.checkNames('Lilli'))
+        });
+
     });
 
-});
+    it("should be able to insert a name in the database", async function() {
+
+        // assemble
+        let greetFactoryFunction = GreetingsFactoryFunction(pool);
+
+        //act
+        await greetFactoryFunction.insertNameQuery('John');
+
+        // assert
+
+        assert.deepEqual([{ name: 'John' }], await greetFactoryFunction.checkNames('John'));
 
 
-it("should return 1 when one person is greeted", async function() {
+    });
 
-    let greetFactoryFunction1 = greetingsFactoryFunction();
-    let peopleGreeted = greetFactoryFunction1.verifyNames("Loreen")
-    assert.equal(1, await greetFactoryFunction1.numberOfPeopleGreeted(peopleGreeted))
-});
+    it("should be able to greet a person in selected language", async function() {
+        let greetFactoryFunction = GreetingsFactoryFunction(pool);
 
-
-
-it("should push a new username into an array", async function() {
-
-    let greetFactoryFunction = greetingsFactoryFunction();
-    greetFactoryFunction.verifyNames("Titi");
-    assert.deepEqual(["Titi"], await greetFactoryFunction.allNamesArray());
-});
-
-// it("should return error message if language is not selected", function () {
-
-//     let greetFactoryFunction4 = greetingsFactoryFunction();
-//     assert.equal("Please select language", greetFactoryFunction4.errorMessageLanguage())
-// });
+        assert.equal("Hesi Kani John!", await greetFactoryFunction.greetLanguage('John', 'Shona'))
+    });
 
 
-it("should return an array with all usernames", async function() {
-    let greetFactoryFunction5 = greetingsFactoryFunction();
-    await greetFactoryFunction5.verifyNames('');
-    assert.deepEqual([], await greetFactoryFunction5.allNamesArray())
 
 
-});
+    it("should return global count", async function() {
 
-it("should be able to return number of people greeted", async function() {
-    let greetFactoryFunction6 = greetingsFactoryFunction();
-    assert.equal(0, await greetFactoryFunction6.numberOfPeopleGreeted())
+        let greetFactoryFunction = GreetingsFactoryFunction(pool);
+
+        // assert that greetFactoryFunction1 is what it should be...
+
+        let countQuery = await pool.query(`SELECT id FROM users`);
+        let count = await countQuery.rowCount;
+
+        // assert.equal('Count is ' + count, await greetFactoryFunction1.numberOfPeopleGreeted())
+    });
 
 
-});
+
+    it("should save a new username into the database", async function() {
+
+        let greetFactoryFunction = GreetingsFactoryFunction(pool);
+        let checkNameQuery = await pool.query("select name from users where name = 'Mandisa'");
+        let checkName = checkNameQuery.rows[0];
+        console.log(checkName);
+
+        assert.equal(checkName, await greetFactoryFunction.insertNameQuery('Mandisa'));
+    });
 
 
-it("should return error message when user name has not been entered", async function() {
-    let greetFactoryFunction7 = greetingsFactoryFunction();
 
-    assert.equal("Please enter userName", await greetFactoryFunction7.errorMessageUserName(""))
+    it("should return an object with all usernames", async function() {
+        let greetFactoryFunction = GreetingsFactoryFunction(pool);
+        let allNames = await pool.query(`SELECT name FROM users`)
+        names = allNames.rows
 
+        assert.deepEqual(names, await greetFactoryFunction.getNames())
+
+
+    });
+
+
+
+    after(async function() {
+        await pool.end();
+    })
 
 });
