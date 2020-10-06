@@ -3,7 +3,7 @@ let app = express();
 let bodyParser = require("body-parser");
 let handlebars = require("express-handlebars");
 let GreetingsFactoryFunction = require("./greetingsFactoryFunction");
-let greetingsFactoryFunction = GreetingsFactoryFunction();
+
 let flash = require('express-flash');
 let session = require('express-session');
 
@@ -13,6 +13,8 @@ let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@lo
 let pool = new Pool({
     connectionString
 });
+
+let greetingsFactoryFunction = GreetingsFactoryFunction(pool);
 
 app.engine('handlebars', handlebars({ layoutsDir: "./views/layouts" }));
 app.set('view engine', 'handlebars');
