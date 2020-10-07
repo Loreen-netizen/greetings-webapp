@@ -1,4 +1,11 @@
-var greetingsFactoryFunction = function(pool) {
+var greetingsFactoryFunction = function() {
+
+    let pg = require("pg");
+    let Pool = pg.Pool;
+    let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
+    let pool = new Pool({
+        connectionString
+    });
 
     var language = undefined;
 
@@ -31,19 +38,25 @@ var greetingsFactoryFunction = function(pool) {
         var theName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
         var nameRows = await checkNames(theName)
-        if (nameRows.rowCount === 0) {
-            await insertNameQuery(theName)
-
+        console.log({ nameRows })
+        if (nameRows.length === 0) {
+            const result = await insertNameQuery(theName)
+            console.log({ result }, 'insert')
         } else {
-            await updateCounter(theName)
-
+            const result = await updateCounter(theName)
+            console.log({ result }, 'update')
         };
     };
 
     var greetLanguage = async function(name, language) {
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
-        await verifyNames(caseName);
+
+        try {
+            await verifyNames(caseName);
+        } catch (error) {
+            console.log({ eror });
+        }
         if (language === "Shona" && name != "") {
             return ("Hesi Kani " + caseName + "!")
         }
@@ -60,7 +73,6 @@ var greetingsFactoryFunction = function(pool) {
     var getNames = async function() {
 
         let allNames = await pool.query(`SELECT name FROM users`)
-            // console.log(allNames.rows)
         return allNames.rows;
     };
 

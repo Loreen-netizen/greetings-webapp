@@ -8,6 +8,7 @@ let flash = require('express-flash');
 let session = require('express-session');
 
 let pg = require("pg");
+const { log } = require("handlebars");
 let Pool = pg.Pool;
 let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
 let pool = new Pool({
@@ -67,11 +68,18 @@ app.post("/greet", async function(req, res) {
             req.flash('error', 'Please select language!')
 
         } else {
-            var greet = {
-                greet: await greetingsFactoryFunction.greetLanguage(name, language),
-                count: await greetingsFactoryFunction.numberOfPeopleGreeted()
-            }
+            // var greet = {
+            //     greet: await greetingsFactoryFunction.greetLanguage(name, language),
+            //     count: await greetingsFactoryFunction.numberOfPeopleGreeted()
+            // }
+
         }
+
+        var greet = {
+            greet: await greetingsFactoryFunction.greetLanguage(name, language),
+            count: await greetingsFactoryFunction.numberOfPeopleGreeted()
+        }
+        console.log({ greet });
 
         let globalCounter = "Count is " + await greetingsFactoryFunction.numberOfPeopleGreeted()
 
@@ -122,6 +130,19 @@ app.get("/resetCounter", async function(req, res) {
         res.render("index", {
             counter: reset
         });
+    } catch (error) {
+        console.log(error)
+    }
+
+});
+
+
+app.get("/back", async function(req, res) {
+    let name = await req.body.theUserName;
+    let greetedList = await greetingsFactoryFunction.getNames();
+
+    try {
+        res.render("greeted", { name: greetedList });
     } catch (error) {
         console.log(error)
     }

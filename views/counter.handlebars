@@ -4,19 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- <link rel="stylesheet" href="../public/greet.css"> --}}
     <title>Individual Count</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            align-items: center;
+            background-color: white;
+            background-color: white;
+            background-color: white;
+            margin: 6em 4em 10em 4em;
+            padding-bottom: 5em;
+            padding-top: 5em;
+        }
+
+        body {
+            background-image: scroll;
+            background-image: url("https://media.istockphoto.com/illustrations/hello-in-different-languages-word-cloud-illustration-id1194745913?b=1&k=6&m=1194745913&s=170667a&w=0&h=Fr1T-EvbllBDEBbiLCsJj2BYDSc5uns1XqPek2U5euI=");
+            background-color: pink;
+            min-height: 100%;
+            margin: 0;
+        }
+
+        #text {
+            font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+            font-size: xxx-large;
+            font-weight: 300;
+            padding-bottom: 2em;
+        }
+
+        .buttonTag {
+            background-color: rgb(228, 215, 209);
+            font-family: Ubuntu, 'Helvetica Neue', sans-serif;
+            font-size: x-large;
+            font-weight: 200;
+            border-radius: 10px;
+            margin: 2em;
+            padding: 2em;
+        }
+    </style>
 </head>
 
 <body>
     <div class="main">
-    <div class="counterDiv">
+        <div class="counterDiv">
 
-        <p id="text">{{{this.list}}}</p>
+            <p id="text">{{{this.list}}}</p>
+
+        </div>
+
+         <a href="/back"><button class="buttonTag" {{back}}> Back</button></a> 
 
     </div>
-    </div>
 
-
+  
 </body>
 
 </html>
