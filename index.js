@@ -149,6 +149,16 @@ app.get("/back", async function(req, res) {
 
 });
 
+app.get("/backhome", async function(req, res) {
+
+    try {
+        res.render("index");
+    } catch (error) {
+        console.log(error)
+    }
+
+});
+
 let PORT = process.env.PORT || 3002;
 
 app.listen(PORT, function() {
