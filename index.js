@@ -113,6 +113,19 @@ app.get('/counter/:theUserName', async function(req, res) {
 
 });
 
+app.get("/resetCounter", async function(req, res) {
+
+    await greetingsFactoryFunction.resetCounter();
+    try {
+        res.reload("index", {
+
+        });
+    } catch (error) {
+        console.log(error)
+    }
+
+});
+
 let PORT = process.env.PORT || 3502;
 
 app.listen(PORT, function() {

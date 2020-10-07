@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Greetings Web App</title>
 
 </head>
 
@@ -12,7 +12,7 @@
 
     <div class="main ">
 
-         <div class="err">{{messages.error}}</div>
+        <div class="err">{{messages.error}}</div>
 
 
         <div class="inputDiv">
@@ -20,7 +20,7 @@
                 <input id="userName" placeholder="type your name" class="inputTag" name="theUserName"
                     value="{{greet.theUserName}}"> </input>
 
-              
+
                 <div class="languageDiv">
                     <label class="languageLabels">
 
@@ -41,10 +41,10 @@
                         Ndebele
                     </label>
 
-                   
+
                 </div>
 
-                  <div class="buttons">
+                <div class="buttons">
 
                     <button id="greetbtn" class="buttonTag" type="submit"> greet me</button>
 
@@ -62,14 +62,16 @@
         </div>
 
         <div>
-           
+
         </div>
-        {{!-- <div class="labelDiv"> --}}
 
-            <label id="theGreetLabel" class="inputTag" name="greetingsMessage">{{greet.greet}}</label>
+        <label id="theGreetLabel" class="inputTag" name="greetingsMessage">
 
-        {{!-- </div> --}}
-
+            {{#if greet}}{{greet.greet}}
+            {{else}}
+            Welcome To Greet
+            {{/if}}
+        </label>
 
         <form action="/greeted" , method="GET">
 
@@ -81,6 +83,11 @@
             </div>
 
         </form>
+
+        <div class="buttons"><a href="/resetCounter"><button id="reset" class="buttonTag"> Reset
+                    Counter</button></a> </div>
+
+
 
 
 

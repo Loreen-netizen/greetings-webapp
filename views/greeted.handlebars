@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Greeted Users</title>
 </head>
 
 <body>
-{{#each name}}
+<div class="main">
+    {{#each name}}
 <ul>
     <li><a href="/counter/{{this.name}}">{{this.name}}</a></li>
 </ul>
     
 {{/each }}
 
+</div>
     
 </body>
 

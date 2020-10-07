@@ -86,6 +86,10 @@ var greetingsFactoryFunction = function(pool) {
         return "Count is " + count.rowCount
     }
 
+    var resetCounter = async function() {
+        await pool.query(`DELETE FROM users`)
+    }
+
 
     return {
         numberOfPeopleGreeted,
@@ -94,7 +98,8 @@ var greetingsFactoryFunction = function(pool) {
         getNames,
         checkNames,
         countPerName,
-        insertNameQuery
+        insertNameQuery,
+        resetCounter
 
     }
 };
