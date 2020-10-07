@@ -76,7 +76,8 @@ app.post("/greet", async function(req, res) {
         let globalCounter = "Count is " + await greetingsFactoryFunction.numberOfPeopleGreeted()
 
         res.render("index", {
-            greet
+            greet,
+            globalCounter
 
         });
     } catch (error) {
@@ -115,10 +116,11 @@ app.get('/counter/:theUserName', async function(req, res) {
 
 app.get("/resetCounter", async function(req, res) {
 
-    await greetingsFactoryFunction.resetCounter();
-    try {
-        res.reload("index", {
+    let reset = await greetingsFactoryFunction.resetCounter();
 
+    try {
+        res.render("index", {
+            counter: reset
         });
     } catch (error) {
         console.log(error)
@@ -126,7 +128,7 @@ app.get("/resetCounter", async function(req, res) {
 
 });
 
-let PORT = process.env.PORT || 3502;
+let PORT = process.env.PORT || 3002;
 
 app.listen(PORT, function() {
     console.log("App starting on port", PORT)

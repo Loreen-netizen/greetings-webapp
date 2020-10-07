@@ -14,14 +14,13 @@
 
         <div class="err">{{messages.error}}</div>
 
-
         <div class="inputDiv">
             <form action="/greet" method="POST">
                 <input id="userName" placeholder="type your name" class="inputTag" name="theUserName"
                     value="{{greet.theUserName}}"> </input>
 
-
                 <div class="languageDiv">
+                    
                     <label class="languageLabels">
 
                         <input type="radio" name="language" value="English">
@@ -61,40 +60,31 @@
 
         </div>
 
-        <div>
-
-        </div>
-
         <label id="theGreetLabel" class="inputTag" name="greetingsMessage">
 
             {{#if greet}}{{greet.greet}}
             {{else}}
             Welcome To Greet
             {{/if}}
+
         </label>
 
         <form action="/greeted" , method="GET">
 
             <div class="buttons">
 
-                <button id="allgreetedbtn" class="buttonTag" type="submit"> view all greeted users</button>
-
+                <button id="allgreetedbtn" class="buttonTag" type="submit"> View All Greeted Users</button>
 
             </div>
 
         </form>
 
-        <div class="buttons"><a href="/resetCounter"><button id="reset" class="buttonTag"> Reset
-                    Counter</button></a> </div>
-
-
-
-
-
-
-
-
-
+        <div class="buttons">
+            <a href="/resetCounter">
+                <button class="buttonTag" id="reset" onclick="{{counter}}"> Reset Counter
+                 </button>
+            </a>
+        </div>
 
     </div>
 

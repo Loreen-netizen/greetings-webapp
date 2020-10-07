@@ -40,8 +40,6 @@ var greetingsFactoryFunction = function(pool) {
         };
     };
 
-
-
     var greetLanguage = async function(name, language) {
         var caseName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
@@ -83,11 +81,14 @@ var greetingsFactoryFunction = function(pool) {
 
     var numberOfPeopleGreeted = async function() {
         let count = await pool.query(`SELECT id FROM users`)
+        console.log(count.rowCount);
         return "Count is " + count.rowCount
     }
 
     var resetCounter = async function() {
-        await pool.query(`DELETE FROM users`)
+        let resetQuery = await pool.query(`DELETE FROM users`);
+        console.log(resetQuery.rows);
+        return resetQuery.rows;
     }
 
 

@@ -59,7 +59,7 @@ describe("greetingsFactoryFunction", async function() {
         let countQuery = await pool.query(`SELECT id FROM users`);
         let count = await countQuery.rowCount;
 
-        // assert.equal('Count is ' + count, await greetFactoryFunction1.numberOfPeopleGreeted())
+        assert.equal('Count is ' + count, await greetFactoryFunction.numberOfPeopleGreeted())
     });
 
 
@@ -84,6 +84,22 @@ describe("greetingsFactoryFunction", async function() {
         assert.deepEqual(names, await greetFactoryFunction.getNames())
 
 
+    });
+
+
+    it("should be able to reset counter and clear database", async function() {
+
+        // assemble
+        let greetFactoryFunction = GreetingsFactoryFunction(pool);
+
+        //act
+        await greetFactoryFunction.insertNameQuery('John');
+        let allNames = await pool.query(`SELECT * FROM users`);
+
+
+
+        //assert
+        assert.deepEqual([], await greetFactoryFunction.resetCounter());
     });
 
 
