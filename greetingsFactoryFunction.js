@@ -1,11 +1,5 @@
-var greetingsFactoryFunction = function() {
+var greetingsFactoryFunction = function(pool) {
 
-    let pg = require("pg");
-    let Pool = pg.Pool;
-    let connectionString = process.env.DATABASE_URL || 'postgresql://loreen:pg123@localhost:5432/projects';
-    let pool = new Pool({
-        connectionString
-    });
 
     var language = undefined;
 
