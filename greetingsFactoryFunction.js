@@ -8,7 +8,6 @@ var greetingsFactoryFunction = function(pool) {
         let isName = await pool.query(`SELECT name
         FROM users
         WHERE name = $1`, [name])
-            // console.log(isName.rows);
         return isName.rows;
     };
 
@@ -33,12 +32,10 @@ var greetingsFactoryFunction = function(pool) {
 
         var nameRows = await checkNames(theName)
         console.log({ nameRows })
-        if (nameRows.length === 0) {
+        if (nameRows.length === 0 && name != undefined) {
             const result = await insertNameQuery(theName)
-            console.log({ result }, 'insert')
         } else {
             const result = await updateCounter(theName)
-            console.log({ result }, 'update')
         };
     };
 

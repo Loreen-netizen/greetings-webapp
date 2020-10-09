@@ -59,8 +59,6 @@ app.post("/greet", async function(req, res) {
         let name = req.body.theUserName;
         let language = req.body.language;
 
-        console.log(req.body.language);
-
         if (name === '') {
             req.flash('error', 'Please enter user name')
 
@@ -68,26 +66,18 @@ app.post("/greet", async function(req, res) {
             req.flash('error', 'Please select language!')
 
         } else {
-            // var greet = {
-            //     greet: await greetingsFactoryFunction.greetLanguage(name, language),
-            //     count: await greetingsFactoryFunction.numberOfPeopleGreeted()
-            // }
+            var greet = {
+                greet: await greetingsFactoryFunction.greetLanguage(name, language),
+                count: await greetingsFactoryFunction.numberOfPeopleGreeted()
+            }
 
         }
+        if (language != undefined) {
+            res.render("index", {
+                greet
+            });
+        } else { res.render("index") }
 
-        var greet = {
-            greet: await greetingsFactoryFunction.greetLanguage(name, language),
-            count: await greetingsFactoryFunction.numberOfPeopleGreeted()
-        }
-        console.log({ greet });
-
-        let globalCounter = "Count is " + await greetingsFactoryFunction.numberOfPeopleGreeted()
-
-        res.render("index", {
-            greet,
-            globalCounter
-
-        });
     } catch (error) {
         console.log(error)
     }

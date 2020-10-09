@@ -12,7 +12,6 @@ describe("greetingsFactoryFunction", async function() {
         await pool.query(`delete from users`)
     })
 
-
     describe("greetingsFactoryFunction", async function() {
 
         it("should be able to check if a name is already in the database", async function() {
@@ -38,7 +37,6 @@ describe("greetingsFactoryFunction", async function() {
 
         assert.deepEqual([{ name: 'John' }], await greetFactoryFunction.checkNames('John'));
 
-
     });
 
     it("should be able to greet a person in selected language", async function() {
@@ -48,44 +46,24 @@ describe("greetingsFactoryFunction", async function() {
     });
 
 
-
-
     it("should return global count", async function() {
 
         let greetFactoryFunction = GreetingsFactoryFunction(pool);
 
-        // assert that greetFactoryFunction1 is what it should be...
-
         let countQuery = await pool.query(`SELECT id FROM users`);
-        let count = await countQuery.rowCount;
 
+        let count = await countQuery.rowCount;
+        // assert 
         assert.equal('Count is ' + count, await greetFactoryFunction.numberOfPeopleGreeted())
     });
 
-
-
-    it("should save a new username into the database", async function() {
-
-        let greetFactoryFunction = GreetingsFactoryFunction(pool);
-        let checkNameQuery = await pool.query("select name from users where name = 'Mandisa'");
-        let checkName = checkNameQuery.rows[0];
-        console.log(checkName);
-
-        assert.equal(checkName, await greetFactoryFunction.insertNameQuery('Mandisa'));
-    });
-
-
-
     it("should return an object with all usernames", async function() {
         let greetFactoryFunction = GreetingsFactoryFunction(pool);
-        let allNames = await pool.query(`SELECT name FROM users`)
-        names = allNames.rows
+        let allNames = await greetFactoryFunction.insertNameQuery('Gigi')
 
-        assert.deepEqual(names, await greetFactoryFunction.getNames())
-
+        assert.deepEqual([{ name: 'Gigi' }], await greetFactoryFunction.getNames())
 
     });
-
 
     it("should be able to reset counter and clear database", async function() {
 
@@ -94,15 +72,9 @@ describe("greetingsFactoryFunction", async function() {
 
         //act
         await greetFactoryFunction.insertNameQuery('John');
-        let allNames = await pool.query(`SELECT * FROM users`);
-
-
-
         //assert
         assert.deepEqual([], await greetFactoryFunction.resetCounter());
     });
-
-
 
     after(async function() {
         await pool.end();
